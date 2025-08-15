@@ -7,11 +7,10 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final game = PrimeraLlamaGame();
-
     return Scaffold(
-      appBar: AppBar(title: const Text("Flame Game")),
-      body: GameWidget(game: game),
+      body: GameWidget(
+        game: PrimeraLlamaGame(),
+      ),
     );
   }
 }

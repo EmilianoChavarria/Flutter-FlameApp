@@ -1,21 +1,28 @@
 import 'package:flame/game.dart';
+import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
-import 'components/square_component.dart';
+import 'components/sprite_component.dart';
 
 class PrimeraLlamaGame extends FlameGame {
-  final SquareComponent square = SquareComponent();
+  late SpriteCardComponent card;
 
   @override
   Color backgroundColor() => Colors.black;
 
   @override
   Future<void> onLoad() async {
-    add(square);
-  }
+    // Cargar imagen (asegúrate de tenerla en assets/images/)
+    final sprite = await loadSprite('spiderman.jpg');
 
-  @override
-  void onGameResize(Vector2 size) {
-    super.onGameResize(size);
-    square.position = size / 2;
+    // Crear componente y añadirlo al juego
+    card = SpriteCardComponent(
+      sprite: sprite,
+      size: Vector2.all(120),
+    );
+
+    add(card);
+
+    // Posición inicial al centro
+    card.position = size / 2;
   }
 }
